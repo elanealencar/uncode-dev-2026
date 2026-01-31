@@ -58,6 +58,18 @@ A API deve ler os dados do arquivo `products.json` fornecido neste repositorio e
 - **Mobile-first**
 - Deve funcionar bem em **375px** (mobile) e **1440px** (desktop)
 
+### Deploy publico
+
+O projeto deve estar **publicado e acessivel via URL**. Use uma das plataformas abaixo (todas possuem plano gratuito):
+
+| Plataforma | Melhor para | Guia de deploy |
+|------------|-------------|----------------|
+| **Vercel** | Next.js, React, Vue | [Docs Vercel](https://vercel.com/docs/frameworks/full-stack/nextjs) |
+| **Netlify** | Vite + React, Vite + Vue, Astro | [Vite no Netlify](https://docs.netlify.com/build/frameworks/framework-setup-guides/vite/) \| [React no Netlify](https://docs.netlify.com/build/frameworks/framework-setup-guides/react/) |
+| **Render** | Qualquer stack (static site gratis) | [Primeiro deploy no Render](https://render.com/docs/your-first-deploy) \| [Deploy gratuito](https://render.com/docs/free) |
+
+> Inclua o **link do deploy** no README do seu projeto.
+
 ### Documentacao
 
 Inclua no seu README (ou em um arquivo `DECISIONS.md`) as seguintes secoes:
@@ -65,6 +77,7 @@ Inclua no seu README (ou em um arquivo `DECISIONS.md`) as seguintes secoes:
 - Por que escolheu o framework
 - Estrutura de pastas do projeto
 - Como rodar o projeto localmente
+- **Link do deploy publico**
 - Decisoes tecnicas relevantes
 
 ---
@@ -77,7 +90,6 @@ Inclua no seu README (ou em um arquivo `DECISIONS.md`) as seguintes secoes:
 - Gerenciamento de estado (Context API, Zustand, Pinia, etc.)
 - Animacoes e transicoes no carrinho
 - Filtro ou busca de produtos
-- Deploy funcional (Vercel, Netlify, etc.)
 - Boas praticas de acessibilidade (a11y)
 - SEO basico
 
@@ -90,9 +102,10 @@ Inclua no seu README (ou em um arquivo `DECISIONS.md`) as seguintes secoes:
 | Organizacao e componentizacao | 25% | Estrutura de pastas, separacao de responsabilidades, reuso de componentes |
 | CSS e responsividade | 20% | Abordagem mobile-first, consistencia visual, nao exigimos framework CSS especifico |
 | Logica do carrinho | 20% | Adicao, remocao, quantidade, total correto, persistencia do estado |
-| Servidor / API | 15% | Endpoints funcionais, separacao clara entre client e server |
-| Comunicacao tecnica | 10% | README claro, decisoes bem explicadas |
-| Diferenciais | 10% | IA, testes, TypeScript, deploy, etc. |
+| Servidor / API | 10% | Endpoints funcionais, separacao clara entre client e server |
+| Deploy publico | 10% | Projeto acessivel via URL, processo de deploy documentado |
+| Comunicacao tecnica | 5% | README claro, decisoes bem explicadas |
+| Diferenciais | 10% | IA, testes, TypeScript, etc. |
 
 ---
 
@@ -108,8 +121,9 @@ Cada produto possui os campos: `id`, `name`, `price`, `description`, `image`, `c
 
 1. Faca um **fork** deste repositorio ou crie um repositorio proprio
 2. Desenvolva o projeto
-3. Envie o **link do repositorio** por e-mail ou no formulario indicado
-4. **Prazo:** 5 dias corridos
+3. Faca o **deploy publico** (Vercel, Netlify, Render ou similar)
+4. Envie o **link do repositorio** e o **link do deploy** por e-mail ou no formulario indicado
+5. **Prazo:** 5 dias corridos
 
 ---
 
