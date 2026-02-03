@@ -5,6 +5,7 @@
 Mini e-commerce desenvolvido como **desafio técnico para a Uncode**, com foco em organização de código, componentização, lógica de carrinho, boas práticas de frontend e experiência do usuário.
 
 🔗 **Deploy:** https://uncode-ecommerce.vercel.app/
+
 🔗 **Repositório:** https://github.com/elanealencar/uncode-dev-2026/
 
 ---
@@ -87,7 +88,7 @@ O projeto segue boas práticas básicas de acessibilidade, incluindo:
 - Botões nativos e interações acessíveis
 - Uso de atributos ARIA
 
-## 🔍 SEO Básico
+## SEO Básico
 
 - Renderização server-side (SSR)
 - URLs amigáveis
