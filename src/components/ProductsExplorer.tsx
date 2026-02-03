@@ -48,7 +48,7 @@ export default function ProductsExplorer({ products }: { products: Product[] }) 
   return (
     <section className="space-y-4 mt-4">
       {/* Toolbar */}
-      <div className="rounded-2xl bg-white p-4">
+      <div className="rounded-2xl bg-white">
         <div className="grid gap-3 md:grid-cols-4">
           <div className="md:col-span-2">
             <label htmlFor="search" className="sr-only">
@@ -100,7 +100,7 @@ export default function ProductsExplorer({ products }: { products: Product[] }) 
           </div>
         </div>
 
-        <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-4">
+        <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2">
             <div className="md:col-span-2 flex items-end justify-between gap-3">
             <p className="text-sm text-neutral-600">
               {filtered.length} {filtered.length === 1 ? "produto encontrado" : "produtos encontrados"}
