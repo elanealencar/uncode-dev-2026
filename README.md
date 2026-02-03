@@ -13,6 +13,7 @@ Mini e-commerce desenvolvido como **desafio técnico para a Uncode**, com foco e
 ## Funcionalidades
 
 - Listagem de produtos
+- Busca interativa 
 - Página de detalhes do produto
 - Carrinho de compras (minicart / drawer)
   - Adicionar e remover produtos
@@ -22,7 +23,7 @@ Mini e-commerce desenvolvido como **desafio técnico para a Uncode**, com foco e
 - Layout **responsivo** (mobile-first)
 - Tratamento de produto inexistente (404)
 
----
+--- 
 
 ## Tecnologias Utilizadas
 
@@ -33,6 +34,7 @@ Mini e-commerce desenvolvido como **desafio técnico para a Uncode**, com foco e
 - **Tailwind CSS** - estilização rápida e consistente  
 - **Next/Image** - otimização de imagens  
 - **Vercel** - deploy e ambiente de produção  
+- **Inteligência Artificial** - para criação das imagens dos produtos
 
 ---
 
@@ -69,6 +71,35 @@ public/
 └─ products/
    └─ *.png
 ```
+
+---
+
+## Busca, Filtros e Ordenação
+
+A página inicial conta com um **explorador de produtos interativo**, permitindo ao usuário encontrar itens de forma rápida e intuitiva.
+
+### Funcionalidades disponíveis
+- **Busca por texto**  
+  Pesquisa por nome ou descrição do produto em tempo real.
+
+- **Filtro por categoria**  
+  Seleção dinâmica baseada nas categorias existentes nos produtos.
+
+- **Ordenação**
+  - Relevância
+  - Preço: menor → maior
+  - Preço: maior → menor
+  - Nome: A → Z
+  - Nome: Z → A
+
+- **Limpeza de filtros**  
+  Botão para resetar todos os critérios aplicados.
+
+### Implementação técnica
+- A lógica de busca, filtros e ordenação foi implementada em um **Client Component** (`ProductsExplorer`).
+- Os produtos são buscados no **server** (Server Component) e repassados ao client, garantindo boa performance e separação de responsabilidades.
+- Os filtros são aplicados no client utilizando `useState` e `useMemo`, evitando re-renderizações desnecessárias.
+
 
 ## Servidor / API
 
