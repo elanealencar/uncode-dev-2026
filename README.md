@@ -1,140 +1,157 @@
-# Desafio Tecnico - Desenvolvedor Frontend Junior
+# 🛍️ Uncode Store - E-commerce
 
-**Uncode** - Agencia especializada em e-commerce (Nuvemshop / VNDA)
+## Desafio Tecnico - Desenvolvedor Frontend Junior
 
----
+Mini e-commerce desenvolvido como **desafio técnico para a Uncode**, com foco em organização de código, componentização, lógica de carrinho, boas práticas de frontend e experiência do usuário.
 
-## Sobre o desafio
-
-Construa um **mini e-commerce funcional**. O objetivo e avaliar sua organizacao de codigo, componentizacao, logica de programacao e comunicacao tecnica.
-
-**Prazo:** 5 dias corridos a partir do recebimento.
+🔗 **Deploy:** https://uncode-ecommerce.vercel.app/
+🔗 **Repositório:** https://github.com/elanealencar/uncode-dev-2026/
 
 ---
 
-## Requisitos obrigatorios
+## Funcionalidades
 
-### Framework (escolha 1)
+- Listagem de produtos
+- Página de detalhes do produto
+- Carrinho de compras (minicart / drawer)
+  - Adicionar e remover produtos
+  - Alterar quantidades
+  - Total atualizado em tempo real
+  - Persistência em `localStorage`
+- Layout **responsivo** (mobile-first)
+- Tratamento de produto inexistente (404)
 
-- Next.js
-- Vite + React
-- Vite + Vue
-- Astro
+---
 
-### Servidor / API
+## Tecnologias Utilizadas
 
-Escolha uma das opcoes abaixo para servir os dados dos produtos:
+- **Next.js (App Router)** - rotas dinâmicas, SSR e API Routes  
+- **TypeScript** - tipagem estática e segurança de dados  
+- **React** - componentização e gerenciamento de estado  
+- **Context API** - estado global do carrinho  
+- **Tailwind CSS** - estilização rápida e consistente  
+- **Next/Image** - otimização de imagens  
+- **Vercel** - deploy e ambiente de produção  
 
-- Next.js API Routes
-- Express
-- NestJS
-- Fastify
-- JSON Server
+---
 
-A API deve ler os dados do arquivo `products.json` fornecido neste repositorio e expor **no minimo** 2 endpoints:
+## Estrutura de Pastas
+
+```bash
+src/
+├─ app/
+│  ├─ api/
+│  │  └─ products/
+│  │     ├─ route.ts
+│  │     └─ [id]/route.ts
+│  ├─ product/
+│  │  └─ [id]/
+│  │     ├─ page.tsx
+│  │     └─ AddToCartButton.tsx
+│  ├─ layout.tsx
+│  └─ page.tsx
+├─ components/
+│  ├─ Header.tsx
+│  ├─ Footer.tsx
+│  ├─ ProductCard.tsx
+│  └─ CartDrawer.tsx
+├─ data/
+│  └─ products.json
+├─ lib/
+│  ├─ products.ts
+│  └─ format.ts
+├─ store/
+│  └─ CartContext.tsx
+└─ types/
+   └─ product.ts
+public/
+└─ products/
+   └─ *.png
+```
+
+## Servidor / API
+
+Os dados dos produtos são servidos a partir do arquivo products.json através de API Routes.
 
 | Endpoint | Descricao |
 |----------|-----------|
 | `GET /products` | Lista todos os produtos |
 | `GET /products/:id` | Retorna um produto pelo ID |
 
-### Paginas e componentes
+## Acessibilidade (A11y)
 
-- **Home** - Listagem de produtos com imagem, nome e preco
-- **Pagina de Produto** - Detalhes completos do produto + botao "Adicionar ao carrinho"
-- **Header** - Logo da loja + icone do carrinho com quantidade de itens
-- **Footer** - Simples, com informacoes basicas
+O projeto segue boas práticas básicas de acessibilidade, incluindo:
 
-### Minicarrinho (drawer / sidebar)
+- HTML semântico (header, main, footer)
+- Textos alternativos em imagens
+- Botões nativos e interações acessíveis
+- Uso de atributos ARIA
 
-- Abre ao clicar no icone do carrinho no header
+## 🔍 SEO Básico
+
+- Renderização server-side (SSR)
+- URLs amigáveis
+- Metadata estática e dinâmica (página de produto)
+- Hierarquia correta de headings
+
+## Paginas e componentes
+
+- **Home** - Listagem de produtos com imagem, nome e preço
+- **Pagina de Produto** - Detalhes completos do produto + botão "Adicionar ao carrinho"
+- **Header** - Logo da loja + ícone do carrinho com quantidade de itens
+- **Footer** - Simples, com informações básicas
+
+## Minicarrinho (drawer / sidebar)
+
+- Abre ao clicar no ícone do carrinho no header
 - Lista os produtos adicionados
 - Permite alterar quantidade (+/-)
 - Permite remover item
 - Exibe total atualizado em tempo real
 
-### Responsividade
+## Imagens dos Produtos
+
+As imagens dos produtos foram geradas com auxílio de IA, utilizando prompts específicos para simular fotografias de produto em estúdio, com foco em estética moderna e aplicação em e-commerce.
+
+As imagens são armazenadas localmente em public/products para garantir:
+
+- Melhor performance
+- Estabilidade no deploy
+- Independência de serviços externos
+
+## Responsividade
 
 - **Mobile-first**
 - Deve funcionar bem em **375px** (mobile) e **1440px** (desktop)
 
-### Deploy publico
 
-O projeto deve estar **publicado e acessivel via URL**. Use uma das plataformas abaixo (todas possuem plano gratuito):
+## Como rodar o projeto localmente
+```bash
+# Clone o repositório
+git clone https://github.com/seu-usuario/uncode-dev-2026.git
 
-| Plataforma | Melhor para | Guia de deploy |
-|------------|-------------|----------------|
-| **Vercel** | Next.js, React, Vue | [Docs Vercel](https://vercel.com/docs/frameworks/full-stack/nextjs) |
-| **Netlify** | Vite + React, Vite + Vue, Astro | [Vite no Netlify](https://docs.netlify.com/build/frameworks/framework-setup-guides/vite/) \| [React no Netlify](https://docs.netlify.com/build/frameworks/framework-setup-guides/react/) |
-| **Render** | Qualquer stack (static site gratis) | [Primeiro deploy no Render](https://render.com/docs/your-first-deploy) \| [Deploy gratuito](https://render.com/docs/free) |
+# Acesse a pasta
+cd uncode-dev-2026
 
-> Inclua o **link do deploy** no README do seu projeto.
+# Instale as dependências
+npm install
 
-### Documentacao
+# Rode o projeto
+npm run dev
 
-Inclua no seu README (ou em um arquivo `DECISIONS.md`) as seguintes secoes:
+A aplicação estará disponível em:
+👉 http://localhost:3000
+```
 
-- Por que escolheu o framework
-- Estrutura de pastas do projeto
-- Como rodar o projeto localmente
-- **Link do deploy publico**
-- Decisoes tecnicas relevantes
+## Decisões Técnicas
 
----
-
-## Diferenciais (nao obrigatorios, somam pontos)
-
-- Integracao com IA (ex: chatbot de recomendacao, busca semantica, descricao gerada por IA)
-- Testes (unitarios ou E2E)
-- TypeScript
-- Gerenciamento de estado (Context API, Zustand, Pinia, etc.)
-- Animacoes e transicoes no carrinho
-- Filtro ou busca de produtos
-- Boas praticas de acessibilidade (a11y)
-- SEO basico
+- Context API foi utilizada por ser suficiente para o escopo do carrinho.
+- Leitura dos produtos no server evita dependência de URLs internas e melhora a performance.
+- Imagens locais garantem melhor controle e compatibilidade com o deploy.
+- Organização de commits por etapas para facilitar entendimento da evolução do projeto.
 
 ---
 
-## Criterios de avaliacao
+## 📌 Observação
 
-| Criterio | Peso | O que avaliamos |
-|----------|------|-----------------|
-| Organizacao e componentizacao | 25% | Estrutura de pastas, separacao de responsabilidades, reuso de componentes |
-| CSS e responsividade | 20% | Abordagem mobile-first, consistencia visual, nao exigimos framework CSS especifico |
-| Logica do carrinho | 20% | Adicao, remocao, quantidade, total correto, persistencia do estado |
-| Servidor / API | 10% | Endpoints funcionais, separacao clara entre client e server |
-| Deploy publico | 10% | Projeto acessivel via URL, processo de deploy documentado |
-| Comunicacao tecnica | 5% | README claro, decisoes bem explicadas |
-| Diferenciais | 10% | IA, testes, TypeScript, etc. |
-
----
-
-## Dados dos produtos
-
-O arquivo `products.json` na raiz deste repositorio contem **10 produtos** prontos para uso. Utilize esses dados na sua API.
-
-Cada produto possui os campos: `id`, `name`, `price`, `description`, `image`, `category` e `stock`.
-
----
-
-## Entrega
-
-1. Faca um **fork** deste repositorio ou crie um repositorio proprio
-2. Desenvolva o projeto
-3. Faca o **deploy publico** (Vercel, Netlify, Render ou similar)
-4. Envie o **link do repositorio** e o **link do deploy** por e-mail ou no formulario indicado
-5. **Prazo:** 5 dias corridos
-
----
-
-## Dicas
-
-- Nao se preocupe com perfeicao - queremos ver seu raciocinio e como voce resolve problemas
-- **Commits frequentes e descritivos** sao valorizados
-- Prefira simplicidade funcional a complexidade quebrada
-- Se usar IA como ferramenta de desenvolvimento, mencione no README - transparencia e valorizada
-- Em caso de duvidas, documente suas suposicoes no README
-
----
-
-Boa sorte!
+Este projeto foi desenvolvido exclusivamente para fins de avaliação técnica no processo seletivo da Uncode.
