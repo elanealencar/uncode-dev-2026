@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useCart } from "@/store/CartContext";
 import { formatBRL } from "@/lib/format";
-import { ShoppingCart, ShoppingCartIcon } from "lucide-react";
+import { ShoppingCartIcon } from "lucide-react";
 
 export default function CartDrawer() {
   const {
