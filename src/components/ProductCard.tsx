@@ -7,7 +7,7 @@ export default function ProductCard({ product }: { product: Product }) {
   return (
     <Link
       href={`/product/${product.id}`}
-      className="group rounded-xl border bg-white p-4 shadow-sm transition hover:shadow-md"
+      className="group rounded-xl border bg-gray-200 p-4 shadow-md transition hover:shadow-md"
     >
       <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-neutral-100">
         <Image
@@ -20,8 +20,7 @@ export default function ProductCard({ product }: { product: Product }) {
 
       <div className="mt-3">
         <h3 className="line-clamp-1 font-semibold">{product.name}</h3>
-        <p className="line-clamp-1 text-neutral-600">{product.description}</p>
-        <p className="mt-1 text-sm text-neutral-600">{formatBRL(product.price)}</p>
+        <p className="mt-1 text-sm text-neutral-600 font-bold">{formatBRL(product.price)}</p>
       </div>
     </Link>
   );
