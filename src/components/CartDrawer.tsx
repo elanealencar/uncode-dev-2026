@@ -38,6 +38,7 @@ export default function CartDrawer() {
           isOpen ? "opacity-100" : "pointer-events-none opacity-0",
         ].join(" ")}
         aria-hidden={!isOpen}
+        data-testid="cart-overlay"
       />
 
       <aside
@@ -51,6 +52,7 @@ export default function CartDrawer() {
         role="dialog"
         aria-modal="true"
         aria-label="Carrinho de compras"
+        data-testid="cart-drawer"
       >
         <div className="flex h-full flex-col">
           <div className="flex items-center justify-between border-b px-4 py-4">
@@ -66,22 +68,30 @@ export default function CartDrawer() {
 
             <button
               onClick={closeCart}
-              className="rounded-lg border px-3 py-2 text-sm hover:bg-neutral-50"
+              className="rounded-lg border px-3 py-2 text-sm hover:bg-neutral-50 cursor-pointer"
               aria-label="Fechar carrinho"
+              data-testid="close-cart"
             >
-              Fechar
+              Continuar comprando
             </button>
           </div>
 
           <div className="flex-1 overflow-auto p-4">
             {items.length === 0 ? (
-              <div className="rounded-xl border bg-neutral-50 p-6 text-sm text-neutral-700">
+              <div
+                className="rounded-xl border bg-neutral-50 p-6 text-sm text-neutral-700"
+                data-testid="cart-empty"
+              >
                 Seu carrinho está vazio. Adicione um produto :)
               </div>
             ) : (
               <ul className="space-y-4">
                 {items.map((item) => (
-                  <li key={item.product.id} className="rounded-xl border p-3">
+                  <li
+                    key={item.product.id}
+                    className="rounded-xl border p-3"
+                    data-testid={`cart-item-${item.product.id}`}
+                  >
                     <div className="flex gap-3">
                       <div className="relative h-16 w-16 overflow-hidden rounded-lg bg-neutral-100">
                         <Image
@@ -104,11 +114,15 @@ export default function CartDrawer() {
                               onClick={() => decrease(item.product.id)}
                               className="h-9 w-9 rounded-lg border text-lg hover:bg-neutral-50"
                               aria-label="Diminuir quantidade"
+                              data-testid={`dec-${item.product.id}`}
                             >
                               –
                             </button>
 
-                            <span className="w-8 text-center text-sm font-semibold">
+                            <span
+                              className="w-8 text-center text-sm font-semibold"
+                              data-testid={`qty-${item.product.id}`}
+                            >
                               {item.quantity}
                             </span>
 
@@ -117,6 +131,7 @@ export default function CartDrawer() {
                               className="h-9 w-9 rounded-lg border text-lg hover:bg-neutral-50 disabled:cursor-not-allowed disabled:opacity-60"
                               aria-label="Aumentar quantidade"
                               disabled={item.quantity >= item.product.stock}
+                              data-testid={`inc-${item.product.id}`}
                             >
                               +
                             </button>
@@ -125,6 +140,7 @@ export default function CartDrawer() {
                           <button
                             onClick={() => removeItem(item.product.id)}
                             className="rounded-lg px-3 py-2 text-sm text-red-600 hover:bg-red-50"
+                            data-testid={`remove-${item.product.id}`}
                           >
                             Remover
                           </button>
@@ -146,21 +162,26 @@ export default function CartDrawer() {
           <div className="border-t p-4">
             <div className="flex items-center justify-between">
               <p className="text-sm text-neutral-600">Total</p>
-              <p className="text-lg font-semibold">{formatBRL(totalPrice)}</p>
+              <p className="text-lg font-semibold" data-testid="cart-total">
+                {formatBRL(totalPrice)}
+              </p>
             </div>
 
             <div className="mt-3 flex gap-2">
               <button
                 onClick={clear}
                 disabled={items.length === 0}
-                className="w-full rounded-xl border px-4 py-3 text-sm font-medium hover:bg-neutral-50 disabled:cursor-not-allowed disabled:opacity-60"
+                className="w-full rounded-xl border px-4 py-3 text-sm font-medium hover:bg-neutral-50 cursor-pointer disabled:cursor-not-allowed disabled:opacity-60"
+                data-testid="clear-cart"
               >
                 Limpar
               </button>
 
               <button
+                onClick={() => console.log('Compra finalizada!')}
                 disabled={items.length === 0}
-                className="w-full rounded-xl bg-neutral-900 px-4 py-3 text-sm font-medium text-white hover:bg-orange-500 disabled:cursor-not-allowed disabled:opacity-60"
+                className="w-full rounded-xl bg-neutral-900 px-4 py-3 text-sm font-medium text-white hover:bg-orange-500 cursor-pointer disabled:cursor-not-allowed disabled:opacity-60"
+                data-testid="checkout"
               >
                 Finalizar
               </button>

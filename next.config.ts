@@ -1,12 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  images: {
-    remotePatterns: [
-      { protocol: "https", hostname: "picsum.photos" },
-    ],
-  },
-  reactCompiler: true,
+  images: {},
 };
 
 export default nextConfig;
