@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect } from "react";
 import { useCart } from "@/store/CartContext";
 import { formatBRL } from "@/lib/format";
 import { ShoppingCartIcon } from "lucide-react";
@@ -17,12 +18,23 @@ export default function CartDrawer() {
     clear,
   } = useCart();
 
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const original = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = original;
+    };
+  }, [isOpen]);
+
   return (
     <>
       <div
         onClick={closeCart}
         className={[
-          "fixed inset-0 z-40 bg-black/40 transition-opacity",
+          "fixed inset-0 z-60 bg-black/40 transition-opacity",
           isOpen ? "opacity-100" : "pointer-events-none opacity-0",
         ].join(" ")}
         aria-hidden={!isOpen}
@@ -30,7 +42,10 @@ export default function CartDrawer() {
 
       <aside
         className={[
-          "fixed right-0 top-0 z-50 h-dvh w-[92%] max-w-md border-l bg-white shadow-xl transition-transform",
+          // z alto e fixed ocupando a tela toda no mobile
+          "fixed inset-y-0 right-0 z-70 h-dvh w-screen border-l bg-white shadow-xl transition-transform",
+          // no md+ vira painel com largura limitada
+          "md:w-105",
           isOpen ? "translate-x-0" : "translate-x-full",
         ].join(" ")}
         role="dialog"
@@ -40,8 +55,8 @@ export default function CartDrawer() {
         <div className="flex h-full flex-col">
           <div className="flex items-center justify-between border-b px-4 py-4">
             <div>
-              <div className="flex flex-row justify-center gap-2">
-                <ShoppingCartIcon size={24}/>
+              <div className="flex items-center gap-2">
+                <ShoppingCartIcon size={22} />
                 <p className="text-lg font-semibold">Carrinho</p>
               </div>
               <p className="text-xs text-neutral-600">
@@ -83,7 +98,7 @@ export default function CartDrawer() {
                           {formatBRL(item.product.price)}
                         </p>
 
-                        <div className="mt-2 flex items-center justify-between gap-2">
+                        <div className="mt-2 flex flex-wrap items-center justify-between gap-2">
                           <div className="flex items-center gap-2">
                             <button
                               onClick={() => decrease(item.product.id)}
@@ -99,7 +114,7 @@ export default function CartDrawer() {
 
                             <button
                               onClick={() => increase(item.product.id)}
-                              className="h-9 w-9 rounded-lg border text-lg hover:bg-neutral-50"
+                              className="h-9 w-9 rounded-lg border text-lg hover:bg-neutral-50 disabled:cursor-not-allowed disabled:opacity-60"
                               aria-label="Aumentar quantidade"
                               disabled={item.quantity >= item.product.stock}
                             >

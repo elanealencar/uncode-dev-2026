@@ -26,7 +26,7 @@ export default async function HomePage() {
         Escolha seus itens favoritos e incremente a sua jornada dev!
       </p>
 
-      <div className="mt-6">
+      <div className="mt-3">
         <ProductsExplorer products={products} />
       </div>
     </div>
