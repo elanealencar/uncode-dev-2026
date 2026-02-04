@@ -29,6 +29,7 @@ export default function Header() {
             onClick={toggleCart}
             className="relative flex items-center gap-2 cursor-pointer rounded-xl border-2 border-orange-400 bg-white px-3 py-2 text-sm font-medium shadow-sm hover:bg-neutral-50"
             aria-label="Abrir carrinho"
+            data-testid="open-cart"
           >
             <ShoppingCart size={20}/>
             <span>Carrinho</span>

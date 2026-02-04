@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getProductById } from "@/lib/products";
 import { formatBRL } from "@/lib/format";
 import AddToCartButton from "./AddToCartButton";
+import Link from "next/link";
 
 export default async function ProductPage({
   params,
@@ -62,6 +63,7 @@ export default async function ProductPage({
 
         <div className="mt-5">
           <AddToCartButton product={product} />
+          <p className="mt-5 text-md">{product.description}</p>
         </div>
 
         <div className="mt-5 rounded-xl bg-neutral-50 p-4 text-sm text-neutral-700">
@@ -69,6 +71,16 @@ export default async function ProductPage({
           <p className="mt-1">
             Abra o carrinho pelo botão no topo e ajuste as quantidades em tempo real.
           </p>
+        </div>
+        <div>
+          <Link
+            href="/"
+            className="inline-flex items-center rounded-lg border mt-5 px-3 py-2 text-sm hover:bg-neutral-50 cursor-pointer"
+            aria-label="Retornar para a página inicial"
+            data-testid="retornar-home"
+          >
+            Continuar comprando
+          </Link>
         </div>
       </div>
     </div>
