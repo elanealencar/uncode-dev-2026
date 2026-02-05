@@ -1,6 +1,6 @@
 # 🛍️ Uncode Store - E-commerce
 
-## Desafio Tecnico - Desenvolvedor Frontend Junior
+## Desafio Técnico - Desenvolvedor Frontend Junior
 
 Mini e-commerce desenvolvido como **desafio técnico para a Uncode**, com foco em organização de código, componentização, lógica de carrinho, boas práticas de frontend e experiência do usuário.
 
@@ -34,7 +34,8 @@ Mini e-commerce desenvolvido como **desafio técnico para a Uncode**, com foco e
 - **Tailwind CSS** - estilização rápida e consistente  
 - **Next/Image** - otimização de imagens  
 - **Vercel** - deploy e ambiente de produção  
-- **Inteligência Artificial** - para criação das imagens dos produtos
+- **Inteligência Artificial** - geração das imagens dos produtos
+- **Cypress** - testes automatizados End-to-End (E2E)
 
 ---
 
@@ -70,6 +71,9 @@ src/
 public/
 └─ products/
    └─ *.png
+cypress/
+└─ e2e/
+   └─ cart.cy.ts
 ```
 
 ---
@@ -87,10 +91,8 @@ A página inicial conta com um **explorador de produtos interativo**, permitindo
 
 - **Ordenação**
   - Relevância
-  - Preço: menor → maior
-  - Preço: maior → menor
-  - Nome: A → Z
-  - Nome: Z → A
+  - Preço: menor → maior / maior → menor
+  - Nome: A → Z / Z → A
 
 - **Limpeza de filtros**  
   Botão para resetar todos os critérios aplicados.
@@ -105,10 +107,10 @@ A página inicial conta com um **explorador de produtos interativo**, permitindo
 
 Os dados dos produtos são servidos a partir do arquivo products.json através de API Routes.
 
-| Endpoint | Descricao |
+| Endpoint | Descrição |
 |----------|-----------|
 | `GET /products` | Lista todos os produtos |
-| `GET /products/:id` | Retorna um produto pelo ID |
+| `GET /products/[id]` | Retorna um produto pelo ID |
 
 ## Acessibilidade (A11y)
 
@@ -118,6 +120,7 @@ O projeto segue boas práticas básicas de acessibilidade, incluindo:
 - Textos alternativos em imagens
 - Botões nativos e interações acessíveis
 - Uso de atributos ARIA
+- Navegação funcional por teclado
 
 ## SEO Básico
 
@@ -126,16 +129,16 @@ O projeto segue boas práticas básicas de acessibilidade, incluindo:
 - Metadata estática e dinâmica (página de produto)
 - Hierarquia correta de headings
 
-## Paginas e componentes
+## Páginas e componentes
 
 - **Home** - Listagem de produtos com imagem, nome e preço
 - **Pagina de Produto** - Detalhes completos do produto + botão "Adicionar ao carrinho"
 - **Header** - Logo da loja + ícone do carrinho com quantidade de itens
 - **Footer** - Simples, com informações básicas
 
-## Minicarrinho (drawer / sidebar)
+## Minicarrinho (drawer)
 
-- Abre ao clicar no ícone do carrinho no header
+- Abre ao clicar no ícone do carrinho
 - Lista os produtos adicionados
 - Permite alterar quantidade (+/-)
 - Permite remover item
@@ -175,6 +178,39 @@ A aplicação estará disponível em:
 👉 http://localhost:3000
 ```
 
+## Testes Automatizados (E2E)
+
+Este projeto possui testes End-to-End (E2E) utilizando Cypress, cobrindo o fluxo principal de compra do usuário.
+
+O que é testado:
+
+- Navegação da home para a página de produto
+- Adição de produto ao carrinho
+- Abertura e fechamento do carrinho
+- Incremento e decremento de quantidade
+- Remoção de itens
+- Estado de carrinho vazio
+
+Os testes simulam o comportamento real do usuário, garantindo que as principais funcionalidades do e-commerce estejam funcionando corretamente.
+
+### Como rodar os testes
+- Instalar dependências 
+`npm install`
+
+- Abrir o Cypress (modo interativo)
+`npm run cy:open`
+
+Ideal para visualizar os testes rodando no navegador e debugar interações.
+
+- Rodar testes em modo headless
+`npm run cy:run`
+Executa os testes automaticamente, sem interface gráfica.
+ 
+Observações técnicas
+- Os testes utilizam data-testid para garantir seletores estáveis.
+- Para componentes com position: fixed (como o carrinho lateral), os testes validam existência e conteúdo, evitando falsos negativos relacionados à visibilidade no Cypress.
+
+
 ## Decisões Técnicas
 
 - Context API foi utilizada por ser suficiente para o escopo do carrinho.
@@ -187,3 +223,7 @@ A aplicação estará disponível em:
 ## 📌 Observação
 
 Este projeto foi desenvolvido exclusivamente para fins de avaliação técnica no processo seletivo da Uncode.
+
+## Desenvolvido por:
+Elane Alencar
+Linkedin: https://linkedin.com/in/elanealencar
